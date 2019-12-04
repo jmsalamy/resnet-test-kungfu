@@ -34,14 +34,16 @@ from kungfu.tensorflow.optimizers import (PairAveragingOptimizer,
 from kungfu.tensorflow.initializer import BroadcastGlobalVariablesCallback
 
 """### Global Constants"""
-
+# Training data directory 
+DATA_DIR = '../data/'
+AUTOTUNE = tf.data.experimental.AUTOTUNE
 # Fixed for our Cats & Dogs classes
 NUM_CLASSES = 2
-
+CLASS_NAMES = ['cats', 'dogs']
 # Fixed for Cats & Dogs color images
 CHANNELS = 3
 
-IMAGE_RESIZE = 224
+IMG_RESIZE = 224
 RESNET50_POOLING_AVERAGE = 'avg'
 DENSE_LAYER_ACTIVATION = 'softmax'
 OBJECTIVE_FUNCTION = 'categorical_crossentropy'
@@ -112,33 +114,39 @@ Keras *ImageDataGenerator(...)* generates batches of tensor image data with real
 Kaggle competition rule expects Dog & Cat to be labeled as 1 & 0. Keras >> ImageDataGenerator >> flow_from_directory takes in 'classes' list for mapping it to LABEL indices otherwise treats sub-folders enumerated classes in alphabetical order, i.e., Cat is 0 & Dog is 1.
 """
 
+def get_labe(file_path):
+    parts = tf.strings.split(file_path, os.path.sep)
+    return parts[-2] == CLASS_NAMES
+
+
+def decode_img(img):
+    img = tf.image.decode_jpeg(img, channels=3)
+    img = tf.image.convert_image_dtype(img, tf.float32)
+    img = tf.image.resize(img, [IMG_RESIZE, IMG_RESIZE])
+    return img
+
+
+def process_path(file_path):
+    label = get_labe(file_path)
+    img = tf.io.read_file(file_path)
+    img = decode_img(img)
+    return img, label
+
 
 def process_data():
-    image_size = IMAGE_RESIZE
+    data_dir = DATA_DIR
+    list_ds = tf.data.Dataset.list_files("../data/train_dst/*/*")
+    labeled_ds = list_ds.map(process_path, num_parallel_calls=AUTOTUNE)
 
-    # preprocessing_function is applied on each image but only after re-sizing & augmentation (resize => augment => pre-process)
-    # Each of the keras.application.resnet* preprocess_input MOSTLY mean BATCH NORMALIZATION (applied on each batch) stabilize the inputs to nonlinear activation functions
-    # Batch Normalization helps in faster convergence
-    data_generator = ImageDataGenerator(
-        preprocessing_function=preprocess_input)
+    ds = labeled_ds.shard(num_shards = current_cluster_size(),
+            index=current_rank())
+    ds = ds.repeat(NUM_EPOCHS)
+    ds = ds.batch(BATCH_SIZE_TRAINING)
 
-    # flow_From_directory generates batches of augmented data (where augmentation can be color conversion, etc)
-    # Both train & valid folders must have NUM_CLASSES sub-folders
-    train_generator = data_generator.flow_from_directory(
-        '../data/train_dst',
-        target_size=(image_size, image_size),
-        batch_size=BATCH_SIZE_TRAINING,
-        class_mode='categorical')
-
-    validation_generator = data_generator.flow_from_directory(
-        '../data/valid_dst',
-        target_size=(image_size, image_size),
-        batch_size=BATCH_SIZE_VALIDATION,
-        class_mode='categorical')
-    return train_generator, validation_generator
+    return ds
 
 
-def train_model(model, train_generator, validation_generator, epochs):
+def train_model(model, dataset, epochs):
     """### Train Our Model With Cats & Dogs Train (splitted) Data Set"""
 
     # Early stopping & checkpointing the best model in ../working dir & restoring that as our model for prediction
@@ -150,9 +158,8 @@ def train_model(model, train_generator, validation_generator, epochs):
     # Accumulate history of all permutations (may be for viewing trend) and keep watching for lowest val_loss as final model
 
     model.fit_generator(
-        train_generator,
+        dataset,
         epochs=NUM_EPOCHS,
-        validation_data=validation_generator,
         callbacks=[BroadcastGlobalVariablesCallback()]
     )
 #    model.load_weights("../working/best.hdf5")
@@ -161,9 +168,8 @@ def train_model(model, train_generator, validation_generator, epochs):
 if __name__ == "__main__":
     n_shards = current_cluster_size()
     model = build_model(n_shards)
-    train_generator, validation_generator = process_data()
-    train_model(model, train_generator,
-                validation_generator, epochs=NUM_EPOCHS)
+    train_dataset = process_data()
+    train_model(model, train_dataset, epochs=NUM_EPOCHS)
 
 
 """### Keras Limitations
@@ -182,4 +188,3 @@ if __name__ == "__main__":
 
 1. [Transfer Learning by Dan B](https://www.kaggle.com/dansbecker/transfer-learning)
 """
-
