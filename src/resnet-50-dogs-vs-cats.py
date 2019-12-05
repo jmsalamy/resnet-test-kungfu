@@ -120,7 +120,7 @@ def process_data():
         class_mode='categorical')
 
     validation_generator = data_generator.flow_from_directory(
-        '../data/valid_dst',
+        '../data/val_dst',
         target_size=(image_size, image_size),
         batch_size=BATCH_SIZE_VALIDATION,
         class_mode='categorical')

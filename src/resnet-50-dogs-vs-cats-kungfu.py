@@ -33,13 +33,18 @@ from kungfu.tensorflow.optimizers import (PairAveragingOptimizer,
                                           SynchronousSGDOptimizer)
 from kungfu.tensorflow.initializer import BroadcastGlobalVariablesCallback
 
+# tf.compat.v1.disable_eager_execution()
+
+
 """### Global Constants"""
 # Training data directory 
-DATA_DIR = '../data/'
+TRAIN_DIR = '../data/train_dst'
+VAL_DIR = '../data/val_dst'
+
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 # Fixed for our Cats & Dogs classes
 NUM_CLASSES = 2
-CLASS_NAMES = ['cats', 'dogs']
+CLASS_NAMES = np.array(['cats', 'dogs'])
 # Fixed for Cats & Dogs color images
 CHANNELS = 3
 
@@ -52,7 +57,7 @@ OBJECTIVE_FUNCTION = 'categorical_crossentropy'
 LOSS_METRICS = ['accuracy']
 
 # EARLY_STOP_PATIENCE must be < NUM_EPOCHS
-NUM_EPOCHS = 1
+NUM_EPOCHS = 10
 EARLY_STOP_PATIENCE = 3
 
 # These steps value should be proper FACTOR of no.-of-images in train & valid folders respectively
@@ -102,7 +107,7 @@ def build_model(n_shards):
 
     sgd = optimizers.SGD(lr=LEARNING_RATE*n_shards, decay=1e-6, momentum=0.9, nesterov=True)
     sgd_kungfu = SynchronousSGDOptimizer(sgd, use_locking=True)
-    model.compile(optimizer=sgd, loss=OBJECTIVE_FUNCTION, metrics=LOSS_METRICS)
+    model.compile(optimizer=sgd_kungfu, loss=OBJECTIVE_FUNCTION, metrics=LOSS_METRICS)
 
     return model
 
@@ -114,39 +119,39 @@ Keras *ImageDataGenerator(...)* generates batches of tensor image data with real
 Kaggle competition rule expects Dog & Cat to be labeled as 1 & 0. Keras >> ImageDataGenerator >> flow_from_directory takes in 'classes' list for mapping it to LABEL indices otherwise treats sub-folders enumerated classes in alphabetical order, i.e., Cat is 0 & Dog is 1.
 """
 
-def get_labe(file_path):
+def get_label(file_path):
     parts = tf.strings.split(file_path, os.path.sep)
     return parts[-2] == CLASS_NAMES
 
 
 def decode_img(img):
     img = tf.image.decode_jpeg(img, channels=3)
-    img = tf.image.convert_image_dtype(img, tf.float32)
+    # img = tf.image.convert_image_dtype(img, tf.float32)
     img = tf.image.resize(img, [IMG_RESIZE, IMG_RESIZE])
     return img
 
 
 def process_path(file_path):
-    label = get_labe(file_path)
+    label = get_label(file_path)
     img = tf.io.read_file(file_path)
     img = decode_img(img)
     return img, label
 
 
-def process_data():
-    data_dir = DATA_DIR
-    list_ds = tf.data.Dataset.list_files("../data/train_dst/*/*")
-    labeled_ds = list_ds.map(process_path, num_parallel_calls=AUTOTUNE)
+def process_data(data_dir, sharding=True):
+    ds = tf.data.Dataset.list_files(str(data_dir + "/*/*"))
 
-    ds = labeled_ds.shard(num_shards = current_cluster_size(),
-            index=current_rank())
-    ds = ds.repeat(NUM_EPOCHS)
+    if sharding:
+        ds = ds.shard(num_shards = current_cluster_size(),
+                index=current_rank())
+
+    ds = ds.map(process_path, num_parallel_calls=AUTOTUNE)
+
     ds = ds.batch(BATCH_SIZE_TRAINING)
-
     return ds
 
 
-def train_model(model, dataset, epochs):
+def train_model(model, train_dataset, val_dataset,  epochs):
     """### Train Our Model With Cats & Dogs Train (splitted) Data Set"""
 
     # Early stopping & checkpointing the best model in ../working dir & restoring that as our model for prediction
@@ -157,9 +162,10 @@ def train_model(model, dataset, epochs):
 
     # Accumulate history of all permutations (may be for viewing trend) and keep watching for lowest val_loss as final model
 
-    model.fit_generator(
-        dataset,
-        epochs=NUM_EPOCHS,
+    model.fit(
+        train_dataset,
+        epochs=epochs,
+        validation_data=val_dataset,
         callbacks=[BroadcastGlobalVariablesCallback()]
     )
 #    model.load_weights("../working/best.hdf5")
@@ -168,8 +174,9 @@ def train_model(model, dataset, epochs):
 if __name__ == "__main__":
     n_shards = current_cluster_size()
     model = build_model(n_shards)
-    train_dataset = process_data()
-    train_model(model, train_dataset, epochs=NUM_EPOCHS)
+    train_dataset = process_data(TRAIN_DIR)
+    val_dataset = process_data(VAL_DIR, sharding=False)
+    train_model(model, train_dataset, val_dataset, epochs=NUM_EPOCHS)
 
 
 """### Keras Limitations
