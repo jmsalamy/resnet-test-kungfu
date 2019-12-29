@@ -23,7 +23,7 @@ from absl import flags
 import numpy as np
 import tensorflow as tf
 
-from tensorflow.python.keras.optimizer_v2 import gradient_descent as gradient_descent_v2
+from tensorflow.keras import optimizers
 from official.utils.flags import core as flags_core
 from official.utils.misc import keras_utils
 
@@ -86,10 +86,10 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     self.epochs = -1
     self.prev_lr = -1
 
-  def on_epoch_begin(self, epoch, logs=None):
-    if not hasattr(self.model.optimizer, 'learning_rate'):
-      raise ValueError('Optimizer must have a "learning_rate" attribute.')
-    self.epochs += 1
+  # def on_epoch_begin(self, epoch, logs=None):
+  #   if not hasattr(self.model.optimizer, 'learning_rate'):
+  #     raise ValueError('Optimizer must have a "learning_rate" attribute.')
+  #   self.epochs += 1
 
   def on_batch_begin(self, batch, logs=None):
     """Executes before step begins."""
@@ -176,7 +176,7 @@ class PiecewiseConstantDecayWithWarmup(
 def get_optimizer(learning_rate=0.1):
   """Returns optimizer to use."""
   # The learning_rate is overwritten at the beginning of each step by callback.
-  return gradient_descent_v2.SGD(learning_rate=learning_rate, momentum=0.9)
+  return optimizers.SGD(learning_rate=learning_rate, momentum=0.9)
 
 
 # TODO(hongkuny,haoyuzhang): make cifar model use_tensor_lr to clean up code.

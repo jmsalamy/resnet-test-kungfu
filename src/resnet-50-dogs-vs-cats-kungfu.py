@@ -25,6 +25,7 @@ import tensorflow as tf
 
 tf.test.gpu_device_name()
 
+# KungFu imports
 from kungfu import current_cluster_size, current_rank
 from kungfu.tensorflow.initializer import BroadcastGlobalVariablesCallback
 from kungfu.tensorflow.ops import broadcast
@@ -36,15 +37,16 @@ from kungfu.tensorflow.initializer import BroadcastGlobalVariablesCallback
 # tf.compat.v1.disable_eager_execution()
 
 
-"""### Global Constants"""
+# Global Constants
+
 # Training data directory 
 TRAIN_DIR = '../data/train_dst'
 VAL_DIR = '../data/val_dst'
 
-AUTOTUNE = tf.data.experimental.AUTOTUNE
 # Fixed for our Cats & Dogs classes
 NUM_CLASSES = 2
 CLASS_NAMES = np.array(['cats', 'dogs'])
+
 # Fixed for Cats & Dogs color images
 CHANNELS = 3
 
