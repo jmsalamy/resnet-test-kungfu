@@ -1,11 +1,10 @@
 [D] listening: 0.0.0.0:10000
+[W] /tmp/kungfu-run-10000.sock already exists for 44.767801901s, trying to remove
 [D] Kungfu::updateTo(127.0.0.1:10000,127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003), 4 peers
-[D] got new connection of type Collective from: 127.0.0.1:10003
 [D] got new connection of type Collective from: 127.0.0.1:10002
 [D] got new connection of type Collective from: 127.0.0.1:10001
+[D] got new connection of type Collective from: 127.0.0.1:10003
 [D] New connection to 127.0.0.1:10003
 [D] New connection to 127.0.0.1:10001
 [D] New connection to 127.0.0.1:10002
-{'_initial_decay': 0.0, '_deferred_slot_restorations': {}, 'nesterov': False, '_iterations': None, '_weights': [], '_name': 'SGD', '_hypers_created': False, '_slot_names': [], '_use_locking': True, '_momentum': True, '_slots': {}, '_hyper': {'learning_rate': 0.1, 'momentum': 0.9, 'decay': 0.0}}
-{'_initial_decay': 0.0, '_deferred_slot_restorations': {}, '_algo': <kungfu.tensorflow.optimizers.sync_sgd._SynchronousSGD instance at 0x7fd0704c7dd0>, '_iterations': None, '_weights': [], '_name': 'KungFuSGD', '_hypers_created': False, '_slot_names': [], '_use_locking': True, '_slots': {}, '_hyper': {}, '_optimizer': <tensorflow.python.keras.optimizer_v2.gradient_descent.SGD object at 0x7fd070666e50>}
-Train for 40036 steps, validate for 1562 steps
+Train for 25 steps, validate for 1562 steps

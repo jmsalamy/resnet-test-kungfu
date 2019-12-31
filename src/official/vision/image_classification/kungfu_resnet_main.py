@@ -143,9 +143,7 @@ def run(flags_obj):
 
     # Build KungFu optimizer
     optimizer = common.get_optimizer(lr_schedule)
-    print(optimizer.__dict__)
     optimizer = SynchronousSGDOptimizer(optimizer, use_locking=True)
-    print(optimizer.__dict__)
 
     if flags_obj.fp16_implementation == 'graph_rewrite':
         # Note: when flags_obj.fp16_implementation == "graph_rewrite", dtype as
@@ -176,7 +174,7 @@ def run(flags_obj):
             experimental_run_tf_function=flags_obj.force_v2_in_keras_compile)
     else:
         model.compile(
-            loss='sparse_categorical_crossentropy',
+            loss='sparse_categorical_crossentropy', 
             optimizer=optimizer,
             metrics=(['sparse_categorical_accuracy']
                      if flags_obj.report_accuracy_metrics else None),
@@ -186,8 +184,8 @@ def run(flags_obj):
         imagenet_preprocessing.NUM_IMAGES['train'] // flags_obj.batch_size)
     train_epochs = flags_obj.train_epochs
 
-    callbacks = common.get_callbacks(steps_per_epoch,
-                                     common.learning_rate_schedule)
+    cluster_size = current_cluster_size()
+    callbacks = common.get_callbacks(steps_per_epoch, common.learning_rate_schedule)
 
     # Broadcast variables for KungFu 
     callbacks.append(BroadcastGlobalVariablesCallback())
@@ -199,10 +197,10 @@ def run(flags_obj):
         callbacks.append(tf.keras.callbacks.ModelCheckpoint(ckpt_full_path,
                                                             save_weights_only=True))
 
-    # if mutliple epochs, ignore the train_steps flag.
-    if train_epochs <= 1 and flags_obj.train_steps:
+    # adjust number of steps
+    if flags_obj.train_steps:
         steps_per_epoch = min(flags_obj.train_steps, steps_per_epoch)
-        train_epochs = 1
+        steps_per_epoch = steps_per_epoch // cluster_size
 
     num_eval_steps = (
         imagenet_preprocessing.NUM_IMAGES['validation'] // flags_obj.batch_size)
@@ -227,7 +225,9 @@ def run(flags_obj):
                         validation_data=validation_data,
                         validation_freq=flags_obj.epochs_between_evals,
                         verbose=2)
-    if flags_obj.enable_checkpoint_and_export:
+
+    # Checkpoint only on 0th worker
+    if flags_obj.enable_checkpoint_and_export and current_rank() == 0:
         if dtype == tf.bfloat16:
             logging.warning(
                 "Keras model.save does not support bfloat16 dtype.")
