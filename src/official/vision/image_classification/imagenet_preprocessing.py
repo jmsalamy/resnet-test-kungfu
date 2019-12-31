@@ -38,6 +38,7 @@ from __future__ import print_function
 import os
 from absl import logging
 import tensorflow as tf
+tf.get_logger().setLevel('INFO')
 
 DEFAULT_IMAGE_SIZE = 224
 NUM_CHANNELS = 3

@@ -184,14 +184,15 @@ def run(flags_obj):
         imagenet_preprocessing.NUM_IMAGES['train'] // flags_obj.batch_size)
     train_epochs = flags_obj.train_epochs
 
+
     cluster_size = current_cluster_size()
-    callbacks = common.get_callbacks(steps_per_epoch, common.learning_rate_schedule)
+    callbacks = common.get_callbacks(steps_per_epoch, current_rank(), cluster_size, common.learning_rate_schedule)
 
     # Broadcast variables for KungFu 
     callbacks.append(BroadcastGlobalVariablesCallback())
     
-    # Checkpoint callback 
-    if flags_obj.enable_checkpoint_and_export:
+    # Checkpoint callback only on worker 0
+    if flags_obj.enable_checkpoint_and_export and current_rank() == 0:
         ckpt_full_path = os.path.join(
             flags_obj.model_dir, 'model.ckpt-{epoch:04d}')
         callbacks.append(tf.keras.callbacks.ModelCheckpoint(ckpt_full_path,

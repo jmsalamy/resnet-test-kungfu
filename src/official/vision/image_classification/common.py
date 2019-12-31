@@ -38,7 +38,8 @@ LR_SCHEDULE = [    # (multiplier, epoch to start) tuples
 def learning_rate_schedule(current_epoch,
                            current_batch,
                            steps_per_epoch,
-                           batch_size):
+                           batch_size,
+                           cluster_size):
   """Handles linear scaling rule, gradual warmup, and LR decay.
 
   Scale learning rate at epoch boundaries provided in LR_SCHEDULE by the
@@ -64,7 +65,7 @@ def learning_rate_schedule(current_epoch,
       learning_rate = initial_lr * mult
     else:
       break
-  return learning_rate
+  return learning_rate * cluster_size
 
 
 class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
@@ -78,13 +79,15 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
           output (float).
   """
 
-  def __init__(self, schedule, batch_size, steps_per_epoch):
+  def __init__(self, schedule, batch_size, steps_per_epoch, cluster_size):
     super(LearningRateBatchScheduler, self).__init__()
     self.schedule = schedule
     self.steps_per_epoch = steps_per_epoch
     self.batch_size = batch_size
+    self.cluster_size = cluster_size
     self.epochs = -1
     self.prev_lr = -1
+    
 
   # def on_epoch_begin(self, epoch, logs=None):
   #   if not hasattr(self.model.optimizer, 'learning_rate'):
@@ -96,7 +99,8 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     lr = self.schedule(self.epochs,
                        batch,
                        self.steps_per_epoch,
-                       self.batch_size)
+                       self.batch_size, 
+                       self.cluster_size)
     if not isinstance(lr, (float, np.float32, np.float64)):
       raise ValueError('The output of the "schedule" function should be float.')
     if lr != self.prev_lr:
@@ -180,7 +184,7 @@ def get_optimizer(learning_rate=0.1):
 
 
 # TODO(hongkuny,haoyuzhang): make cifar model use_tensor_lr to clean up code.
-def get_callbacks(steps_per_epoch, learning_rate_schedule_fn=None):
+def get_callbacks(steps_per_epoch, current_rank, cluster_size, learning_rate_schedule_fn=None):
   """Returns common callbacks."""
   time_callback = keras_utils.TimeHistory(FLAGS.batch_size, FLAGS.log_steps)
   callbacks = [time_callback]
@@ -189,10 +193,11 @@ def get_callbacks(steps_per_epoch, learning_rate_schedule_fn=None):
     lr_callback = LearningRateBatchScheduler(
         learning_rate_schedule_fn,
         batch_size=FLAGS.batch_size,
-        steps_per_epoch=steps_per_epoch)
+        steps_per_epoch=steps_per_epoch, 
+        cluster_size=cluster_size)
     callbacks.append(lr_callback)
 
-  if FLAGS.enable_tensorboard:
+  if FLAGS.enable_tensorboard and current_rank == 0:
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
         log_dir=FLAGS.model_dir)
     callbacks.append(tensorboard_callback)
@@ -296,7 +301,7 @@ def define_keras_flags(dynamic_loss_scale=True):
   flags.DEFINE_boolean(name='use_tensor_lr', default=False,
                        help='Use learning rate tensor instead of a callback.')
   flags.DEFINE_boolean(
-      name='enable_tensorboard', default=False,
+      name='enable_tensorboard', default=True,
       help='Whether to enable Tensorboard callback.')
   flags.DEFINE_integer(
       name='train_steps', default=None,
@@ -318,7 +323,7 @@ def define_keras_flags(dynamic_loss_scale=True):
       name='enable_get_next_as_optional', default=False,
       help='Enable get_next_as_optional behavior in DistributedIterator.')
   flags.DEFINE_boolean(
-      name='enable_checkpoint_and_export', default=False,
+      name='enable_checkpoint_and_export', default=True,
       help='Whether to enable a checkpoint callback and export the savedmodel.')
   flags.DEFINE_string(
       name='tpu', default='', help='TPU address to connect to.')
