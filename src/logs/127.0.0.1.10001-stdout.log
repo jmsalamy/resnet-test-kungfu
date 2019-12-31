@@ -1,7 +1,0 @@
-[D] listening: 0.0.0.0:10001
-[W] /tmp/kungfu-run-10001.sock already exists for 44.763632962s, trying to remove
-[D] Kungfu::updateTo(127.0.0.1:10000,127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003), 4 peers
-[D] New connection to 127.0.0.1:10000
-[D] Retry connect to [127.0.0.1:10000] for [1] times. Retry after 200ms. Error: dial unix /tmp/kungfu-run-10000.sock: connect: no such file or directory. 
-[D] got new connection of type Collective from: 127.0.0.1:10000
-Train for 25 steps, validate for 1562 steps
