@@ -227,7 +227,7 @@ def run(flags_obj):
                         validation_steps=num_eval_steps,
                         validation_data=validation_data,
                         validation_freq=flags_obj.epochs_between_evals,
-                        verbose=1)
+                        verbose=2)
 
     # Checkpoint only on 0th worker
     if flags_obj.enable_checkpoint_and_export and current_rank() == 0:
