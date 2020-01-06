@@ -1,5 +1,6 @@
 data/
 working/
 src/logs/
-src/saved-models/
 *.pyc
+saved-models/*/saved_model
+*model.ckpt*
