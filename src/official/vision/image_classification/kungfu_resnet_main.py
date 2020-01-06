@@ -164,28 +164,31 @@ def run(flags_obj):
 
     # TODO(b/138957587): Remove when force_v2_in_keras_compile is on longer
     # a valid arg for this model. Also remove as a valid flag.
+
+    metrics = (['sparse_categorical_accuracy'])
+    metrics.append('sparse_top_k_categorical_accuracy')
+
     if flags_obj.force_v2_in_keras_compile is not None:
         model.compile(
             loss='sparse_categorical_crossentropy',
             optimizer=optimizer,
-            metrics=(['sparse_categorical_accuracy']
-                     if flags_obj.report_accuracy_metrics else None),
+            metrics=metrics,
             run_eagerly=flags_obj.run_eagerly,
             experimental_run_tf_function=flags_obj.force_v2_in_keras_compile)
     else:
         model.compile(
             loss='sparse_categorical_crossentropy', 
             optimizer=optimizer,
-            metrics=(['sparse_categorical_accuracy']
-                     if flags_obj.report_accuracy_metrics else None),
+            metrics=metrics,
             run_eagerly=flags_obj.run_eagerly)
 
+    # adjust number of steps
+    cluster_size = current_cluster_size()
     steps_per_epoch = (
         imagenet_preprocessing.NUM_IMAGES['train'] // flags_obj.batch_size)
+    steps_per_epoch = steps_per_epoch // cluster_size
+
     train_epochs = flags_obj.train_epochs
-
-
-    cluster_size = current_cluster_size()
     callbacks = common.get_callbacks(steps_per_epoch, current_rank(), cluster_size, common.learning_rate_schedule)
 
     # Broadcast variables for KungFu 
@@ -198,10 +201,9 @@ def run(flags_obj):
         callbacks.append(tf.keras.callbacks.ModelCheckpoint(ckpt_full_path,
                                                             save_weights_only=True))
 
-    # adjust number of steps
+
     if flags_obj.train_steps:
         steps_per_epoch = min(flags_obj.train_steps, steps_per_epoch)
-        steps_per_epoch = steps_per_epoch // cluster_size
 
     num_eval_steps = (
         imagenet_preprocessing.NUM_IMAGES['validation'] // flags_obj.batch_size)
