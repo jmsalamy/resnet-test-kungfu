@@ -2,3 +2,4 @@ data/
 working/
 src/logs/
 src/saved-models/
+*.pyc

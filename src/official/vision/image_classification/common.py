@@ -24,6 +24,7 @@ import numpy as np
 import tensorflow as tf
 
 from tensorflow.keras import optimizers
+from tensorflow.compat.v1 import logging
 from official.utils.flags import core as flags_core
 from official.utils.misc import keras_utils
 
@@ -54,18 +55,23 @@ def learning_rate_schedule(current_epoch,
   Returns:
     Adjusted learning rate.
   """
-  initial_lr = BASE_LEARNING_RATE * batch_size / 256
+  effective_batch_size = batch_size*cluster_size
+  initial_lr = BASE_LEARNING_RATE * effective_batch_size / 256
+ #  logging.info("here -------------------")
+ #  logging.info(current_epoch)
   epoch = current_epoch + float(current_batch) / steps_per_epoch
   warmup_lr_multiplier, warmup_end_epoch = LR_SCHEDULE[0]
+
   if epoch < warmup_end_epoch:
     # Learning rate increases linearly per step.
-    return initial_lr * warmup_lr_multiplier * epoch / warmup_end_epoch
+    lr = initial_lr * warmup_lr_multiplier * epoch / warmup_end_epoch
+    return lr
   for mult, start_epoch in LR_SCHEDULE:
     if epoch >= start_epoch:
       learning_rate = initial_lr * mult
     else:
       break
-  return learning_rate * cluster_size
+  return learning_rate
 
 
 class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
@@ -89,10 +95,10 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     self.prev_lr = -1
     
 
-  # def on_epoch_begin(self, epoch, logs=None):
+  def on_epoch_begin(self, epoch, logs=None):
   #   if not hasattr(self.model.optimizer, 'learning_rate'):
   #     raise ValueError('Optimizer must have a "learning_rate" attribute.')
-  #   self.epochs += 1
+    self.epochs += 1
 
   def on_batch_begin(self, batch, logs=None):
     """Executes before step begins."""
