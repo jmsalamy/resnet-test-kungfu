@@ -142,8 +142,11 @@ def run(flags_obj):
             compute_lr_on_cpu=True)
 
     # Build KungFu optimizer
-    optimizer = common.get_optimizer(lr_schedule)
-    optimizer = SynchronousSGDOptimizer(optimizer, use_locking=True)
+    opt = common.get_optimizer(lr_schedule)
+    # logging.info(opt.__dict__)
+    optimizer = SynchronousSGDOptimizer(opt, use_locking=True)
+    optimizer._hyper = opt._hyper
+    # logging.info(optimizer.__dict__)
 
     if flags_obj.fp16_implementation == 'graph_rewrite':
         # Note: when flags_obj.fp16_implementation == "graph_rewrite", dtype as
