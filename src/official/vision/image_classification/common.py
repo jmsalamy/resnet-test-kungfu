@@ -96,8 +96,8 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     
 
   def on_epoch_begin(self, epoch, logs=None):
-  #   if not hasattr(self.model.optimizer, 'learning_rate'):
-  #     raise ValueError('Optimizer must have a "learning_rate" attribute.')
+    if not hasattr(self.model.optimizer, 'learning_rate'):
+       raise ValueError('Optimizer must have a "learning_rate" attribute.')
     self.epochs += 1
 
   def on_batch_begin(self, batch, logs=None):
@@ -112,7 +112,7 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     if lr != self.prev_lr:
       self.model.optimizer.learning_rate = lr  # lr should be a float here
       self.prev_lr = lr
-      tf.compat.v1.logging.debug(
+      tf.compat.v1.logging.info(
           'Epoch %05d Batch %05d: LearningRateBatchScheduler '
           'change learning rate to %s.', self.epochs, batch, lr)
 
@@ -190,7 +190,7 @@ def get_optimizer(learning_rate=0.1):
 
 
 # TODO(hongkuny,haoyuzhang): make cifar model use_tensor_lr to clean up code.
-def get_callbacks(steps_per_epoch, current_rank, cluster_size, learning_rate_schedule_fn=None):
+def get_callbacks(steps_per_epoch, current_rank, cluster_size, learning_rate_schedule_fn):
   """Returns common callbacks."""
   time_callback = keras_utils.TimeHistory(FLAGS.batch_size, FLAGS.log_steps)
   callbacks = [time_callback]
