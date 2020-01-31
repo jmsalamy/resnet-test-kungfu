@@ -112,9 +112,9 @@ class LearningRateBatchScheduler(tf.keras.callbacks.Callback):
     if lr != self.prev_lr:
       self.model.optimizer.learning_rate = lr  # lr should be a float here
       self.prev_lr = lr
-      tf.compat.v1.logging.info(
-          'Epoch %05d Batch %05d: LearningRateBatchScheduler '
-          'change learning rate to %s.', self.epochs, batch, lr)
+      #tf.compat.v1.logging.info(
+      #    'Epoch %05d Batch %05d: LearningRateBatchScheduler '
+      #    'change learning rate to %s.', self.epochs, batch, lr)
 
 
 class PiecewiseConstantDecayWithWarmup(
