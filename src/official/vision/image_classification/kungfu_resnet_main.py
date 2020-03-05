@@ -89,6 +89,8 @@ def run(flags_obj):
                        if tf.test.is_built_with_cuda() else 'channels_last')
     tf.keras.backend.set_image_data_format(data_format)
 
+    preprocessing_seed = 12345
+
     # pylint: disable=protected-access
     if flags_obj.use_synthetic_data:
         distribution_utils.set_up_synthetic_data()
@@ -116,6 +118,9 @@ def run(flags_obj):
         datasets_num_private_threads=flags_obj.datasets_num_private_threads,
         dtype=dtype,
         drop_remainder=drop_remainder,
+        random_seed = preprocessing_seed, #addition
+        num_workers = current_cluster_size(), #addition
+        worker_ID = current_rank(), #addition
         tf_data_experimental_slack=flags_obj.tf_data_experimental_slack,
         training_dataset_cache=flags_obj.training_dataset_cache,
     )

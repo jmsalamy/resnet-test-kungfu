@@ -72,6 +72,9 @@ def process_record_dataset(dataset,
                            dtype=tf.float32,
                            datasets_num_private_threads=None,
                            drop_remainder=False,
+                           random_seed=None,
+                           num_workers=None,
+                           worker_ID=None,
                            tf_data_experimental_slack=False):
   """Given a Dataset with raw records, return an iterator over the records.
 
@@ -90,6 +93,10 @@ def process_record_dataset(dataset,
       threadpool created for all datasets computation.
     drop_remainder: A boolean indicates whether to drop the remainder of the
       batches. If True, the batch dimension will be static.
+    random_seed: Provide random seed to the shuffle operation for consistency
+      between distributed sessions
+    num_workers, worker_ID: total number and individual ID from KF, used to 
+      perform batch division sharding
     tf_data_experimental_slack: Whether to enable tf.data's
       `experimental_slack` option.
 
@@ -105,9 +112,21 @@ def process_record_dataset(dataset,
     logging.info(
         'datasets_num_private_threads: %s', datasets_num_private_threads)
 
+#ensure same level of randomness is maintained, either by:
+  #repeating data then shuffling
+  #randomising how data is passed out by the handler
+  #current_rank holds the ID of who you are
+  #fix seed?
+
+  #use shard with i = current_rank, n = current_cluster_size
+
   if is_training:
     # Shuffles records before repeating to respect epoch boundaries.
-    dataset = dataset.shuffle(buffer_size=shuffle_buffer)
+    if random_seed != None:
+      #Use random seed to lock shuffle order if available
+      dataset = dataset.shuffle(buffer_size=shuffle_buffer,seed=random_seed)
+    else:
+      dataset = dataset.shuffle(buffer_size=shuffle_buffer)
     # Repeats the dataset for the number of epochs to train.
     dataset = dataset.repeat()
 
@@ -117,6 +136,12 @@ def process_record_dataset(dataset,
       num_parallel_calls=tf.data.experimental.AUTOTUNE)
   dataset = dataset.batch(batch_size, drop_remainder=drop_remainder)
 
+  #shard batches into N worker shares, only take i (current worker)
+  if num_workers != None and worker_ID != None:
+    dataset = dataset.shard(num_workers,worker_ID)
+  else:
+    pass
+  
   # Operations between the final prefetch and the get_next call to the iterator
   # will happen synchronously during run time. We prefetch here again to
   # background all of the above processing work and keep it out of the
@@ -256,6 +281,9 @@ def input_fn(is_training,
              parse_record_fn=parse_record,
              input_context=None,
              drop_remainder=False,
+             random_seed=None,
+             num_workers=None,
+             worker_ID=None,
              tf_data_experimental_slack=False,
              training_dataset_cache=False):
   """Input function which provides batches for train or eval.
@@ -272,6 +300,10 @@ def input_fn(is_training,
       `tf.distribute.Strategy`.
     drop_remainder: A boolean indicates whether to drop the remainder of the
       batches. If True, the batch dimension will be static.
+    random_seed: Provide random seed to the shuffle operation for consistency
+      between distributed sessions
+    num_workers: Total number of workers in the cluster at present time
+    worker_ID: ID of current worker (in range of num_workers)
     tf_data_experimental_slack: Whether to enable tf.data's
       `experimental_slack` option.
     training_dataset_cache: Whether to cache the training dataset on workers.
@@ -319,6 +351,9 @@ def input_fn(is_training,
       dtype=dtype,
       datasets_num_private_threads=datasets_num_private_threads,
       drop_remainder=drop_remainder,
+      random_seed=random_seed,
+      num_workers=num_workers,
+      worker_ID=worker_ID,
       tf_data_experimental_slack=tf_data_experimental_slack,
   )
 
