@@ -1,0 +1,11 @@
+[D] listening: 0.0.0.0:10002
+[D] Kungfu::updateTo(127.0.0.1:10000,127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003), 4 peers
+[D] got new connection of type Collective from: 127.0.0.1:10001
+[D] New connection to 127.0.0.1:10003
+Train for 500 steps, validate for 390 steps
+Epoch 1/2
+500/500 - 303s - loss: 12.2233 - sparse_categorical_accuracy: 0.0020 - sparse_top_k_categorical_accuracy: 0.0083 - val_loss: 12.1980 - val_sparse_categorical_accuracy: 0.0032 - val_sparse_top_k_categorical_accuracy: 0.0140
+Epoch 2/2
+500/500 - 346s - loss: 11.5937 - sparse_categorical_accuracy: 0.0103 - sparse_top_k_categorical_accuracy: 0.0389 - val_loss: 10.9155 - val_sparse_categorical_accuracy: 0.0234 - val_sparse_top_k_categorical_accuracy: 0.0796
+390/390 - 41s - loss: 10.9155 - sparse_categorical_accuracy: 0.0234 - sparse_top_k_categorical_accuracy: 0.0796
+[D] Server Closed
