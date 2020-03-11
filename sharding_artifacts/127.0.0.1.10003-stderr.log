@@ -1,0 +1,72 @@
+2020-03-11 14:49:12.925399: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-11 14:49:46.078827: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-03-11 14:49:50.488609: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:50.489273: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-16GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:00:07.0
+2020-03-11 14:49:50.489297: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-11 14:49:51.181427: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-11 14:49:51.476782: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2020-03-11 14:49:51.623590: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2020-03-11 14:49:52.380265: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2020-03-11 14:49:52.780535: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2020-03-11 14:49:53.912213: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-03-11 14:49:53.912430: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:53.916102: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:53.919348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2020-03-11 14:49:53.932129: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-03-11 14:49:54.308987: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300000000 Hz
+2020-03-11 14:49:54.311578: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cf926a6d30 executing computations on platform Host. Devices:
+2020-03-11 14:49:54.311606: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+2020-03-11 14:49:55.029178: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:55.032827: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cf927097c0 executing computations on platform CUDA. Devices:
+2020-03-11 14:49:55.032847: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla V100-SXM2-16GB, Compute Capability 7.0
+2020-03-11 14:49:55.033066: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:55.036165: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-16GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:00:07.0
+2020-03-11 14:49:55.036201: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-11 14:49:55.036236: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-11 14:49:55.036245: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2020-03-11 14:49:55.036254: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2020-03-11 14:49:55.036263: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2020-03-11 14:49:55.036284: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2020-03-11 14:49:55.036293: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-03-11 14:49:55.036349: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:55.039678: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:49:55.043074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2020-03-11 14:49:55.068850: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-11 14:50:01.570509: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-03-11 14:50:01.570562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2020-03-11 14:50:01.570571: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2020-03-11 14:50:01.570960: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:50:01.571727: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-11 14:50:01.572444: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14828 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-16GB, pci bus id: 0000:00:07.0, compute capability: 7.0)
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow_core/python/ops/image_ops_impl.py:2487: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0311 14:50:03.726363 139661943264704 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_core/python/ops/image_ops_impl.py:2487: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+2020-03-11 14:50:18.685873: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-11 14:50:30.195064: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 2521 of 10000
+2020-03-11 14:50:40.191415: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 5119 of 10000
+2020-03-11 14:50:50.240964: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 7612 of 10000
+2020-03-11 14:50:59.832397: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:193] Shuffle buffer filled.
+2020-03-11 14:51:02.764247: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+WARNING:tensorflow:Method (on_train_batch_end) is slow compared to the batch update (0.571053). Check your callbacks.
+W0311 14:51:15.133364 139661943264704 callbacks.py:244] Method (on_train_batch_end) is slow compared to the batch update (0.571053). Check your callbacks.
+I0311 14:54:28.447228 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':100, 'time_taken': 260.038602,'examples_per_second': 49.223461}
+I0311 14:57:21.215754 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':200, 'time_taken': 172.768613,'examples_per_second': 74.087531}
+I0311 14:59:54.715162 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':300, 'time_taken': 153.499414,'examples_per_second': 83.387941}
+I0311 15:02:07.320096 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':400, 'time_taken': 132.604930,'examples_per_second': 96.527331}
+I0311 15:04:14.833321 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':500, 'time_taken': 127.513231,'examples_per_second': 100.381740}
+I0311 15:05:40.211303 139661943264704 keras_utils.py:96] BenchmarkMetric: {'epoch':0, 'time_taken': 932.482364}
+I0311 15:07:20.469538 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':600, 'time_taken': 185.636187,'examples_per_second': 68.952073}
+I0311 15:08:38.417763 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':700, 'time_taken': 77.948233,'examples_per_second': 164.211548}
+I0311 15:09:36.141603 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':800, 'time_taken': 57.723849,'examples_per_second': 221.745435}
+I0311 15:10:31.052759 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':900, 'time_taken': 54.911139,'examples_per_second': 233.103888}
+I0311 15:11:23.156121 139661943264704 keras_utils.py:88] BenchmarkMetric: {'global step':1000, 'time_taken': 52.103386,'examples_per_second': 245.665416}
+I0311 15:12:10.124017 139661943264704 keras_utils.py:96] BenchmarkMetric: {'epoch':1, 'time_taken': 389.912113}
+I0311 15:12:52.666426 139661943264704 kungfu_resnet_main.py:270] Run stats:
+{'loss': 11.584726274490356, 'training_accuracy_top_1': 0.010171875357627869, 'step_timestamp_log': ['BatchTimestamp<batch_index: 1, timestamp: 1583938208.41>', 'BatchTimestamp<batch_index: 100, timestamp: 1583938468.45>', 'BatchTimestamp<batch_index: 200, timestamp: 1583938641.22>', 'BatchTimestamp<batch_index: 300, timestamp: 1583938794.72>', 'BatchTimestamp<batch_index: 400, timestamp: 1583938927.32>', 'BatchTimestamp<batch_index: 500, timestamp: 1583939054.83>', 'BatchTimestamp<batch_index: 600, timestamp: 1583939240.47>', 'BatchTimestamp<batch_index: 700, timestamp: 1583939318.42>', 'BatchTimestamp<batch_index: 800, timestamp: 1583939376.14>', 'BatchTimestamp<batch_index: 900, timestamp: 1583939431.05>', 'BatchTimestamp<batch_index: 1000, timestamp: 1583939483.16>'], 'accuracy_top_1': 0.02576121874153614, 'avg_exp_per_second': 100.41203575993843, 'train_finish_time': 1583939530.125021, 'eval_loss': 10.843434443840614}
