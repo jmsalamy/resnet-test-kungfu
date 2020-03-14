@@ -1,0 +1,27 @@
+[D] listening: 0.0.0.0:10003
+[D] Kungfu::updateTo(10.128.0.53:10000,10.128.0.53:10001,10.128.0.53:10002,10.128.0.53:10003,10.128.0.55:10000,10.128.0.55:10001,10.128.0.55:10002,10.128.0.55:10003), 8 peers
+[D] got new connection of type Collective from: 10.128.0.55:10002
+[D] New connection to 10.128.0.53:10000
+Train for 500 steps, validate for 390 steps
+Epoch 1/10
+500/500 - 1309s - loss: 12.0451 - sparse_categorical_accuracy: 0.0043 - sparse_top_k_categorical_accuracy: 0.0181 - val_loss: 11.4444 - val_sparse_categorical_accuracy: 0.0182 - val_sparse_top_k_categorical_accuracy: 0.0576
+Epoch 2/10
+500/500 - 403s - loss: 10.5515 - sparse_categorical_accuracy: 0.0379 - sparse_top_k_categorical_accuracy: 0.1194 - val_loss: 9.8321 - val_sparse_categorical_accuracy: 0.0590 - val_sparse_top_k_categorical_accuracy: 0.1734
+Epoch 3/10
+500/500 - 393s - loss: 8.7554 - sparse_categorical_accuracy: 0.0946 - sparse_top_k_categorical_accuracy: 0.2399 - val_loss: 11.4811 - val_sparse_categorical_accuracy: 0.0756 - val_sparse_top_k_categorical_accuracy: 0.2030
+Epoch 4/10
+500/500 - 393s - loss: 7.1404 - sparse_categorical_accuracy: 0.1539 - sparse_top_k_categorical_accuracy: 0.3447 - val_loss: 6.3084 - val_sparse_categorical_accuracy: 0.1871 - val_sparse_top_k_categorical_accuracy: 0.4058
+Epoch 5/10
+500/500 - 394s - loss: 5.8911 - sparse_categorical_accuracy: 0.2049 - sparse_top_k_categorical_accuracy: 0.4228 - val_loss: 5.4867 - val_sparse_categorical_accuracy: 0.2055 - val_sparse_top_k_categorical_accuracy: 0.4314
+Epoch 6/10
+500/500 - 394s - loss: 5.0978 - sparse_categorical_accuracy: 0.2422 - sparse_top_k_categorical_accuracy: 0.4787 - val_loss: 4.8948 - val_sparse_categorical_accuracy: 0.2448 - val_sparse_top_k_categorical_accuracy: 0.4875
+Epoch 7/10
+500/500 - 395s - loss: 4.6504 - sparse_categorical_accuracy: 0.2756 - sparse_top_k_categorical_accuracy: 0.5192 - val_loss: 4.3331 - val_sparse_categorical_accuracy: 0.3072 - val_sparse_top_k_categorical_accuracy: 0.5676
+Epoch 8/10
+500/500 - 393s - loss: 4.3948 - sparse_categorical_accuracy: 0.3031 - sparse_top_k_categorical_accuracy: 0.5529 - val_loss: 4.3124 - val_sparse_categorical_accuracy: 0.3074 - val_sparse_top_k_categorical_accuracy: 0.5639
+Epoch 9/10
+500/500 - 393s - loss: 4.2419 - sparse_categorical_accuracy: 0.3261 - sparse_top_k_categorical_accuracy: 0.5780 - val_loss: 4.2647 - val_sparse_categorical_accuracy: 0.3151 - val_sparse_top_k_categorical_accuracy: 0.5734
+Epoch 10/10
+500/500 - 392s - loss: 4.1624 - sparse_categorical_accuracy: 0.3417 - sparse_top_k_categorical_accuracy: 0.5942 - val_loss: 4.2118 - val_sparse_categorical_accuracy: 0.3255 - val_sparse_top_k_categorical_accuracy: 0.5896
+390/390 - 48s - loss: 4.2118 - sparse_categorical_accuracy: 0.3255 - sparse_top_k_categorical_accuracy: 0.5896
+[D] Server Closed
