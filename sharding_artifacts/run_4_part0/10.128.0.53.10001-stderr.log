@@ -1,0 +1,121 @@
+2020-03-14 04:15:52.058385: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-14 04:15:55.576213: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-03-14 04:15:59.769010: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:15:59.781316: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-16GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:00:05.0
+2020-03-14 04:15:59.781357: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-14 04:16:00.437844: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-14 04:16:00.883247: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2020-03-14 04:16:01.093043: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2020-03-14 04:16:01.939800: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2020-03-14 04:16:02.206177: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2020-03-14 04:16:03.704259: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-03-14 04:16:03.704505: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:03.708010: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:03.710934: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2020-03-14 04:16:03.733883: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-03-14 04:16:04.152292: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300000000 Hz
+2020-03-14 04:16:04.154710: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x557cfc2f7b80 executing computations on platform Host. Devices:
+2020-03-14 04:16:04.154743: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+2020-03-14 04:16:05.144116: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:05.147403: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x557cfc35a560 executing computations on platform CUDA. Devices:
+2020-03-14 04:16:05.147425: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla V100-SXM2-16GB, Compute Capability 7.0
+2020-03-14 04:16:05.147650: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:05.150812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-16GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:00:05.0
+2020-03-14 04:16:05.150847: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-14 04:16:05.150880: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-14 04:16:05.150890: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2020-03-14 04:16:05.150899: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2020-03-14 04:16:05.150908: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2020-03-14 04:16:05.150917: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2020-03-14 04:16:05.150926: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-03-14 04:16:05.150989: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:05.153838: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:05.156789: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2020-03-14 04:16:05.171632: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-03-14 04:16:11.310660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-03-14 04:16:11.310698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2020-03-14 04:16:11.310706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2020-03-14 04:16:11.311020: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:11.311720: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-03-14 04:16:11.312431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14828 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-16GB, pci bus id: 0000:00:05.0, compute capability: 7.0)
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow_core/python/ops/image_ops_impl.py:2487: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0314 04:16:13.469460 140697452082624 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_core/python/ops/image_ops_impl.py:2487: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+2020-03-14 04:16:28.892606: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-03-14 04:16:40.383694: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 2380 of 10000
+2020-03-14 04:16:50.347465: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 4904 of 10000
+2020-03-14 04:17:00.381313: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 7144 of 10000
+2020-03-14 04:17:10.382622: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:143] Filling up shuffle buffer (this may take a while): 9385 of 10000
+2020-03-14 04:17:12.583255: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:193] Shuffle buffer filled.
+2020-03-14 04:17:13.930198: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+WARNING:tensorflow:Method (on_train_batch_end) is slow compared to the batch update (0.566364). Check your callbacks.
+W0314 04:17:28.535012 140697452082624 callbacks.py:244] Method (on_train_batch_end) is slow compared to the batch update (0.566364). Check your callbacks.
+I0314 04:23:50.917996 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':100, 'time_taken': 452.807508,'examples_per_second': 28.268083}
+I0314 04:28:38.521631 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':200, 'time_taken': 287.603749,'examples_per_second': 44.505679}
+I0314 04:32:17.757376 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':300, 'time_taken': 219.235748,'examples_per_second': 58.384639}
+I0314 04:34:47.512250 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':400, 'time_taken': 149.754853,'examples_per_second': 85.473023}
+I0314 04:36:44.523319 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':500, 'time_taken': 117.011090,'examples_per_second': 109.391341}
+I0314 04:38:10.377065 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':0, 'time_taken': 1312.961843}
+I0314 04:39:29.278444 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':600, 'time_taken': 164.755091,'examples_per_second': 77.691074}
+I0314 04:40:44.757810 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':700, 'time_taken': 75.479385,'examples_per_second': 169.582727}
+I0314 04:41:52.948571 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':800, 'time_taken': 68.190753,'examples_per_second': 187.708735}
+I0314 04:43:01.732194 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':900, 'time_taken': 68.783633,'examples_per_second': 186.090781}
+I0314 04:44:10.613704 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1000, 'time_taken': 68.881524,'examples_per_second': 185.826319}
+I0314 04:44:59.652764 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':1, 'time_taken': 409.275183}
+I0314 04:46:09.123553 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1100, 'time_taken': 118.509836,'examples_per_second': 108.007912}
+I0314 04:47:18.211977 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1200, 'time_taken': 69.088422,'examples_per_second': 185.269828}
+I0314 04:48:26.345798 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1300, 'time_taken': 68.133841,'examples_per_second': 187.865528}
+I0314 04:49:35.437558 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1400, 'time_taken': 69.091719,'examples_per_second': 185.260986}
+I0314 04:50:43.883148 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1500, 'time_taken': 68.445633,'examples_per_second': 187.009740}
+I0314 04:51:32.979877 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':2, 'time_taken': 393.326159}
+I0314 04:52:42.151891 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1600, 'time_taken': 118.268718,'examples_per_second': 108.228112}
+I0314 04:53:50.522799 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1700, 'time_taken': 68.370933,'examples_per_second': 187.214061}
+I0314 04:54:59.640685 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1800, 'time_taken': 69.117867,'examples_per_second': 185.190900}
+I0314 04:56:08.163892 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':1900, 'time_taken': 68.523219,'examples_per_second': 186.797997}
+I0314 04:57:17.159909 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2000, 'time_taken': 68.996012,'examples_per_second': 185.517969}
+I0314 04:58:06.215212 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':3, 'time_taken': 393.234709}
+I0314 04:59:15.658236 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2100, 'time_taken': 118.498335,'examples_per_second': 108.018395}
+I0314 05:00:24.094402 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2200, 'time_taken': 68.436168,'examples_per_second': 187.035604}
+I0314 05:01:32.423629 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2300, 'time_taken': 68.329217,'examples_per_second': 187.328358}
+I0314 05:02:40.624573 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2400, 'time_taken': 68.200942,'examples_per_second': 187.680692}
+I0314 05:03:48.595217 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2500, 'time_taken': 67.970643,'examples_per_second': 188.316594}
+I0314 05:04:37.784259 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':4, 'time_taken': 391.568545}
+I0314 05:05:47.056483 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2600, 'time_taken': 118.461231,'examples_per_second': 108.052229}
+I0314 05:06:56.164485 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2700, 'time_taken': 69.108050,'examples_per_second': 185.217207}
+I0314 05:08:05.632441 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2800, 'time_taken': 69.467939,'examples_per_second': 184.257661}
+I0314 05:09:14.702790 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':2900, 'time_taken': 69.070355,'examples_per_second': 185.318289}
+I0314 05:10:23.280601 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3000, 'time_taken': 68.577797,'examples_per_second': 186.649332}
+I0314 05:11:12.139760 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':5, 'time_taken': 394.354872}
+I0314 05:12:21.855056 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3100, 'time_taken': 118.574479,'examples_per_second': 107.949030}
+I0314 05:13:30.335184 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3200, 'time_taken': 68.480129,'examples_per_second': 186.915536}
+I0314 05:14:38.363274 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3300, 'time_taken': 68.028088,'examples_per_second': 188.157574}
+I0314 05:15:47.102348 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3400, 'time_taken': 68.739058,'examples_per_second': 186.211455}
+I0314 05:16:55.223156 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3500, 'time_taken': 68.120807,'examples_per_second': 187.901473}
+I0314 05:17:44.245786 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':6, 'time_taken': 392.105560}
+I0314 05:18:52.934252 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3600, 'time_taken': 117.711113,'examples_per_second': 108.740795}
+I0314 05:20:01.439614 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3700, 'time_taken': 68.505340,'examples_per_second': 186.846748}
+I0314 05:21:09.539357 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3800, 'time_taken': 68.099750,'examples_per_second': 187.959574}
+I0314 05:22:18.567635 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':3900, 'time_taken': 69.028271,'examples_per_second': 185.431271}
+I0314 05:23:27.058928 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4000, 'time_taken': 68.491302,'examples_per_second': 186.885044}
+I0314 05:24:16.109236 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':7, 'time_taken': 391.862975}
+I0314 05:25:25.009103 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4100, 'time_taken': 117.950176,'examples_per_second': 108.520398}
+I0314 05:26:33.672744 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4200, 'time_taken': 68.663638,'examples_per_second': 186.415989}
+I0314 05:27:42.807737 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4300, 'time_taken': 69.134995,'examples_per_second': 185.145020}
+I0314 05:28:51.547364 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4400, 'time_taken': 68.739642,'examples_per_second': 186.209873}
+I0314 05:30:00.285068 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4500, 'time_taken': 68.737688,'examples_per_second': 186.215166}
+I0314 05:30:49.324870 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':8, 'time_taken': 393.215215}
+I0314 05:31:57.836196 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4600, 'time_taken': 117.551142,'examples_per_second': 108.888776}
+I0314 05:33:06.573461 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4700, 'time_taken': 68.737253,'examples_per_second': 186.216345}
+I0314 05:34:15.095510 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4800, 'time_taken': 68.522045,'examples_per_second': 186.801196}
+I0314 05:35:24.180679 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':4900, 'time_taken': 69.085186,'examples_per_second': 185.278505}
+I0314 05:36:32.361911 140697452082624 keras_utils.py:88] BenchmarkMetric: {'global step':5000, 'time_taken': 68.181205,'examples_per_second': 187.735022}
+I0314 05:37:21.216109 140697452082624 keras_utils.py:96] BenchmarkMetric: {'epoch':9, 'time_taken': 391.890819}
+I0314 05:38:03.655030 140697452082624 kungfu_resnet_main.py:270] Run stats:
+{'loss': 4.176728521347046, 'training_accuracy_top_1': 0.33903124928474426, 'step_timestamp_log': ['BatchTimestamp<batch_index: 1, timestamp: 1584159378.11>', 'BatchTimestamp<batch_index: 100, timestamp: 1584159830.92>', 'BatchTimestamp<batch_index: 200, timestamp: 1584160118.52>', 'BatchTimestamp<batch_index: 300, timestamp: 1584160337.76>', 'BatchTimestamp<batch_index: 400, timestamp: 1584160487.51>', 'BatchTimestamp<batch_index: 500, timestamp: 1584160604.52>', 'BatchTimestamp<batch_index: 600, timestamp: 1584160769.28>', 'BatchTimestamp<batch_index: 700, timestamp: 1584160844.76>', 'BatchTimestamp<batch_index: 800, timestamp: 1584160912.95>', 'BatchTimestamp<batch_index: 900, timestamp: 1584160981.73>', 'BatchTimestamp<batch_index: 1000, timestamp: 1584161050.61>', 'BatchTimestamp<batch_index: 1100, timestamp: 1584161169.12>', 'BatchTimestamp<batch_index: 1200, timestamp: 1584161238.21>', 'BatchTimestamp<batch_index: 1300, timestamp: 1584161306.35>', 'BatchTimestamp<batch_index: 1400, timestamp: 1584161375.44>', 'BatchTimestamp<batch_index: 1500, timestamp: 1584161443.88>', 'BatchTimestamp<batch_index: 1600, timestamp: 1584161562.15>', 'BatchTimestamp<batch_index: 1700, timestamp: 1584161630.52>', 'BatchTimestamp<batch_index: 1800, timestamp: 1584161699.64>', 'BatchTimestamp<batch_index: 1900, timestamp: 1584161768.16>', 'BatchTimestamp<batch_index: 2000, timestamp: 1584161837.16>', 'BatchTimestamp<batch_index: 2100, timestamp: 1584161955.66>', 'BatchTimestamp<batch_index: 2200, timestamp: 1584162024.09>', 'BatchTimestamp<batch_index: 2300, timestamp: 1584162092.42>', 'BatchTimestamp<batch_index: 2400, timestamp: 1584162160.62>', 'BatchTimestamp<batch_index: 2500, timestamp: 1584162228.6>', 'BatchTimestamp<batch_index: 2600, timestamp: 1584162347.06>', 'BatchTimestamp<batch_index: 2700, timestamp: 1584162416.16>', 'BatchTimestamp<batch_index: 2800, timestamp: 1584162485.63>', 'BatchTimestamp<batch_index: 2900, timestamp: 1584162554.7>', 'BatchTimestamp<batch_index: 3000, timestamp: 1584162623.28>', 'BatchTimestamp<batch_index: 3100, timestamp: 1584162741.86>', 'BatchTimestamp<batch_index: 3200, timestamp: 1584162810.34>', 'BatchTimestamp<batch_index: 3300, timestamp: 1584162878.36>', 'BatchTimestamp<batch_index: 3400, timestamp: 1584162947.1>', 'BatchTimestamp<batch_index: 3500, timestamp: 1584163015.22>', 'BatchTimestamp<batch_index: 3600, timestamp: 1584163132.93>', 'BatchTimestamp<batch_index: 3700, timestamp: 1584163201.44>', 'BatchTimestamp<batch_index: 3800, timestamp: 1584163269.54>', 'BatchTimestamp<batch_index: 3900, timestamp: 1584163338.57>', 'BatchTimestamp<batch_index: 4000, timestamp: 1584163407.06>', 'BatchTimestamp<batch_index: 4100, timestamp: 1584163525.01>', 'BatchTimestamp<batch_index: 4200, timestamp: 1584163593.67>', 'BatchTimestamp<batch_index: 4300, timestamp: 1584163662.81>', 'BatchTimestamp<batch_index: 4400, timestamp: 1584163731.55>', 'BatchTimestamp<batch_index: 4500, timestamp: 1584163800.29>', 'BatchTimestamp<batch_index: 4600, timestamp: 1584163917.84>', 'BatchTimestamp<batch_index: 4700, timestamp: 1584163986.57>', 'BatchTimestamp<batch_index: 4800, timestamp: 1584164055.1>', 'BatchTimestamp<batch_index: 4900, timestamp: 1584164124.18>', 'BatchTimestamp<batch_index: 5000, timestamp: 1584164192.36>'], 'accuracy_top_1': 0.3418269157409668, 'avg_exp_per_second': 132.93862973416117, 'train_finish_time': 1584164241.2166, 'eval_loss': 4.117551275400015}
