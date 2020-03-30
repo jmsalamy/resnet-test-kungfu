@@ -4,3 +4,4 @@ src/logs/
 *.pyc
 src/saved-models/
 *model.ckpt*
+.DS_Store
