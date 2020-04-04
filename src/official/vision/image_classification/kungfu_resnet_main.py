@@ -144,7 +144,7 @@ def run(flags_obj):
     # Build KungFu optimizer
     opt = common.get_optimizer(lr_schedule)
     # logging.info(opt.__dict__)
-    optimizer = SynchronousSGDOptimizer(opt,reshape_strategy=False, use_locking=True)
+    optimizer = SynchronousSGDOptimizer(opt,reshape=False, use_locking=True)
     optimizer._hyper = opt._hyper
     # logging.info(optimizer.__dict__)
 
